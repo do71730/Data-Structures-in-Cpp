@@ -50,11 +50,6 @@ The following functions are implemented in `structure.h`:
 
 ## Example Usage
 
-Below is a simple example demonstrating how to use the Stack, Queue, and Deque
-structures implemented in `structure.h`. 
-
-## Example Usage
-
 Below are short examples demonstrating how to use the **Stack**, **Queue**, and **Deque** structures implemented in `structure.h`.
 
 ```cpp
