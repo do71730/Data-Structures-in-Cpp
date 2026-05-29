@@ -15,6 +15,8 @@ int main() {
     cout << "Structure contents: ";
     myStruct.display();
 
+
+    
     // Remove an element from the structure
     myStruct.pop_back();
     // Display the structure again
@@ -28,6 +30,7 @@ int main() {
     // Access elements using at()
     cout << "Element at index 0 using at(): " << myStruct.at(0) << endl;
     cout << "Element at index 1 using at(): " << myStruct.at(1) << endl;
+
     //add more elements to the structure
     myStruct.push_back(30);
     myStruct.push_back(40);
@@ -37,11 +40,34 @@ int main() {
     cout << "Structure contents after adding more elements: ";
     myStruct.display();
 
-    //erase an element from the structure
-    myStruct.erase(1);
-    // Display the structure again
-    cout << "Structure contents after erasing index 1: ";
+    
+    myStruct.erase(0);
+    myStruct.erase(0);
+    myStruct.erase(2);
+    myStruct.erase(0);
+    myStruct.erase(0);
+    myStruct.erase(0);
+    cout << "Structure contents after Erasing more elements: ";
     myStruct.display();
+
+    cout << "Structure contents after adding 1 more elements after repeated erasures: ";
+    myStruct.push_back(1);
+    myStruct.display();
+
+    cout << "Structure contents after pop_back 1 element: ";
+    myStruct.pop_back();
+    myStruct.display();
+
+
+    //add more elements to the structure
+    myStruct.push_back(300);
+    myStruct.push_back(90);
+    myStruct.push_back(50);
+    myStruct.push_back(1);
+    // Display the structure again
+    cout << "\n Structure contents after adding more elements: ";
+    myStruct.display();
+ 
 
     // Sort the structure
     myStruct.sort();
@@ -49,17 +75,15 @@ int main() {
     cout << "Structure contents after sorting: ";
     myStruct.display();
 
+    
+
     //pop front element from the structure
     myStruct.pop_front();
+    myStruct.pop_front();
+    myStruct.pop_front();
+    myStruct.pop_front();
     // Display the structure again
-    cout << "Structure contents after pop_front: ";
-    myStruct.display();
-
-    //pop back element from the structure
-    myStruct.pop_back();
-    // Display the structure again
-    cout << "Structure contents after pop_back: ";
-
+    cout << "Structure contents after pop_fronting all: ";
     myStruct.display();
 
     // Check if the structure is empty
@@ -70,6 +94,6 @@ int main() {
     // Display the structure again  
     cout << "Structure contents after deletion: ";
     myStruct.display();
-
+    
     return 0;
 }

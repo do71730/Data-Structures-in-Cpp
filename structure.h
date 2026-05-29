@@ -114,14 +114,15 @@ inline void structure::push_back(int num){
     n->num = num;
     n->next = nullptr;
     n->prev = tail;
-    if (head == nullptr){
-        head = n;
-    }
-    if ( tail ==nullptr){
+    if (tail == nullptr){
         tail = n;
+        tail->next = nullptr;
     }else{
         tail ->next = n;
         tail = n;
+    }
+    if ( head == nullptr){
+        head = n;
     }
     count++;
 
@@ -153,6 +154,7 @@ inline void structure::pop_front(){
         head->prev = nullptr;
     }else{
         head = nullptr;
+        tail = nullptr;
     }
     delete oldHead;
     count --;
@@ -169,6 +171,7 @@ inline void structure::pop_back(){
         tail->next = nullptr;
     }else{
         tail = nullptr;
+        head = nullptr;
     }
     delete oldTail;
     count --;
@@ -215,29 +218,15 @@ inline void structure::erase(int index){
 }
 
 inline void structure::deleted(){
-   try {
-        if(head == nullptr){
-            throw 404;
-        }
-        node * curr = head;
-        for(int i = count; i>0;i--){
-            if (curr != nullptr){
-                curr->prev->next = curr->next;
-                curr->next->prev = curr->prev;
-                delete head;
-                count --;
-                head = curr->next;
-                curr = curr->next;
-            }
-        delete head;
-        tail = nullptr;
-        head = nullptr;
-        count = 0;
-
-        }
-    }catch(...){
-        cout << "Index out of bound!\n \n";
+    node* curr = head;
+    while(curr != nullptr){
+        node* nextNode = curr->next;
+        delete curr;
+        curr = nextNode;
     }
+    head = nullptr;
+    tail = nullptr;
+    count = 0;
 } 
 
 class stack:public structure{};
