@@ -229,11 +229,41 @@ inline void structure::deleted(){
     count = 0;
 } 
 
-class stack:public structure{};
+class stack:private structure{
+    public:
+        using structure::push_back;
+        using structure::pop_back;
+        using structure::back;
+        using structure::empty;
+        using structure::display;
+        using structure::size;
+        using structure::deleted;
+        using structure::sort;
+        void push(int num){push_back(num);}
+        void pop(){pop_back();}
+        int top(){return back();}
 
-class queue:public structure{};
+};
 
-class dequeue:public structure{};
+class queue:private structure{
+    public:
+        using structure::push_back;
+        using structure::pop_front;
+        using structure::front;
+        using structure::back;
+        using structure::empty;
+        using structure::display;
+        using structure::size;
+        using structure::deleted;
+        using structure::sort;
+        void push(int num){push_back(num);}
+        void pop(){pop_front();}
+};
+
+
+class dequeue:public structure{
+  
+};
 
 
 #endif
