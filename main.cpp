@@ -1,9 +1,25 @@
 #include "container_structure.h"
+#include "tree_structure.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
+    //create an instance of tree
+    tree bt;
+    bt.root = bt.insert(bt.root,1);
+    bt.root = bt.insert(bt.root,2);
+    bt.root = bt.insert(bt.root,3);
+    bt.root = bt.insert(bt.root,4);
+    bt.traversal("pre_order",bt.root);
+    cout <<endl;
+    bt.traversal("post_order",bt.root);
+    cout <<endl;
+    bt.traversal("in_order",bt.root);
+    cout <<endl;
+
+
+
     // Create an instance of the structure
     structure myStruct;
 
