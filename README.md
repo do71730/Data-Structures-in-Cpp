@@ -4,8 +4,9 @@ This project explores several fundamental data structures implemented manually i
 The main goal is to understand how these structures work internally **without using their standard library equivalents**.
 
 ## Components of the Project
-- **structure.h** — Contains class definitions and function declarations  
-- **main.cpp** — Test cases (some generated using GitHub Copilot)
+- **container_structure.h** — Contains class definitions and function declarations for container structures. 
+- **main.cpp** — Test cases (some generated using GitHub Copilot).
+- **tree_structure.h** — **Future Implementation** Contains class definitions and function declarations for tree structures. 
 
 ## Implemented Data Structures
 - **Stack** — A LIFO structure that allows pushing and popping from the top.  
@@ -19,7 +20,7 @@ The main goal is to understand how these structures work internally **without us
 
 ## Available Functions
 
-The following functions are implemented in `structure.h`:
+The following functions are implemented in `container_structure.h`:
 
 | Function | Description | Stack | Queue | Deque |
 |---------|-------------|-------|--------|--------|
@@ -50,10 +51,10 @@ The following functions are implemented in `structure.h`:
 
 ## Example Usage
 
-Below are short examples demonstrating how to use the **Stack**, **Queue**, and **Deque** structures implemented in `structure.h`.
+Below are short examples demonstrating how to use the **Stack**, **Queue**, and **Deque** structures implemented in `container_structure.h`.
 
 ```cpp
-#include "structure.h"
+#include "container_structure.h"
 #include <iostream>
 using namespace std;
 

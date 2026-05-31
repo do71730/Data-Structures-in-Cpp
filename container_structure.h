@@ -1,9 +1,9 @@
-#ifndef STRUCTURE_H
-#define STRUCTURE_H
+#ifndef CONTAINER_STRUCTURE_H
+#define CONTAINER_STRUCTURE_H
 
 #include <iostream>
 using namespace std;
-const int INT_MIN =-2147483648;
+const int INT_ERROR =-2147483648;
 
 class structure{
     private:
@@ -53,7 +53,7 @@ inline structure::structure(int num){
 }
 
 inline int& structure::at(int index){
-    int n = INT_MIN;
+    int n = INT_ERROR;
     try{
         if (index < 0 || index >= count){
             throw 404;
