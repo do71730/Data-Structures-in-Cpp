@@ -22,18 +22,28 @@ class tree{
         node *root;
         tree();
         tree(int num);
-        ~tree();
+        void delete_tree(node * root);
         node* insert(node* root, int value); 
         void delete_value(int num);
         void traversal(string type,node * root);
         int height();
-        void search(int value);
+        void search(node* root,  int value);
 
 
 
 
 
 };
+
+inline void tree::delete_tree(node * root){
+    if(root == nullptr){
+        return;
+    }
+    delete_tree(root->left_child);
+    delete_tree(root->right_child);
+    delete root;
+}
+
 
 tree::node* tree::insert(node* root, int value) {
 
