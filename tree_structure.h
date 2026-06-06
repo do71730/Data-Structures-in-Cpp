@@ -7,7 +7,7 @@
 using namespace std;
 
 class tree{
-    private:
+    protected:
         struct node {
             int value;
             node * parent;
@@ -23,7 +23,7 @@ class tree{
         tree();
         tree(int num);
         void delete_tree(node * root);
-        node* insert(node* root, int value); 
+        virtual node* insert(node* root, int value); 
         void delete_value(int num);
         void traversal(string type,node * root);
         int height();
@@ -45,7 +45,7 @@ inline void tree::delete_tree(node * root){
 }
 
 
-tree::node* tree::insert(node* root, int value) {
+tree::node* tree::insert(node* root,int value) {
 
     if (root == nullptr){
         root = new node();
@@ -56,31 +56,22 @@ tree::node* tree::insert(node* root, int value) {
         return root;
     }
 
-    if(value < root->value){
-        //go left
-        if(root->left_child == nullptr){
+    if (root->left_child == nullptr){
             node* n = new node();
             n->value = value;
             n->right_child=nullptr;
             n->left_child = nullptr;
             n->parent = root; //?? Dont think this is right
             root->left_child = n;
-        }else{
-            insert(root->left_child, value);
-        }
-
-    //go right
-    }else if(value > root->value){
-        if(root->right_child ==nullptr){
+    }else if (root->right_child ==nullptr){
             node* n = new node();
             n->value = value;
             n->right_child=nullptr;
             n->left_child = nullptr;
             n->parent = root; //?? Dont think this is right
             root->right_child = n;
-        }else{
-            insert(root->right_child, value);
-        }
+    }else{
+            insert(root->left_child,value);
     }
     return root;
 
@@ -149,8 +140,71 @@ void inline tree::post_order(node * root){
     cout << root->value << "->";
 }
 
-class Binary_Tree:private tree{};
-class Binary_Search_Tree:private tree{};
-class AVL_Tree:private tree{};
-class Splay_Tree:private tree{};
+class Binary_Tree:public tree{
+    public:
+        Binary_Tree();
+        Binary_Tree(int value);
+};
+class Binary_Search_Tree:public tree{
+    public:
+
+        node* insert(node* root, int value) override{}
+        Binary_Search_Tree();
+        Binary_Search_Tree(int value);
+
+};
+class AVL_Tree:public tree{
+    public:
+        node* insert(node* root, int value) override{}
+        AVL_Tree();
+        AVL_Tree(int value);
+
+};
+class Splay_Tree:public tree{
+    public:
+        node* insert(node* root, int value) override{}
+        Splay_Tree();
+        Splay_Tree(int value);
+};
+
+
+Binary_Search_Tree::node* Binary_Search_Tree::insert(node* root, int value) {
+
+    if (root == nullptr){
+        root = new node();
+        root->value = value;
+        root->right_child = nullptr;
+        root->left_child = nullptr;
+        root->parent =  nullptr;
+        return root;
+    }
+
+    if(value < root->value){
+        //go left
+        if(root->left_child == nullptr){
+            node* n = new node();
+            n->value = value;
+            n->right_child=nullptr;
+            n->left_child = nullptr;
+            n->parent = root; //?? Dont think this is right
+            root->left_child = n;
+        }else{
+            insert(root->left_child, value);
+        }
+
+    //go right
+    }else if(value > root->value){
+        if(root->right_child ==nullptr){
+            node* n = new node();
+            n->value = value;
+            n->right_child=nullptr;
+            n->left_child = nullptr;
+            n->parent = root; //?? Dont think this is right
+            root->right_child = n;
+        }else{
+            insert(root->right_child, value);
+        }
+    }
+    return root;
+}
 #endif
