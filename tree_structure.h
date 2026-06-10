@@ -57,6 +57,7 @@ class Splay_Tree:public tree{
         node* insert(node* root, int value) override{}
         Splay_Tree();
         Splay_Tree(int value);
+        node * splay(node*root,int value);
 };
 
 inline void tree::delete_tree(node * root){
@@ -247,6 +248,11 @@ AVL_Tree::node* AVL_Tree::insert(node* root, int value) {
     }
 
     //Check height
+
+    //RR
+    //LL
+    //RL
+    //LR
     return root;
 }
 
