@@ -13,6 +13,7 @@ class tree{
             node * parent;
             node * left_child;
             node * right_child;
+            int height;
         };
         void pre_order(node * root);
         void in_order(node* root);
@@ -29,10 +30,33 @@ class tree{
         int height();
         void search(node* root,  int value);
 
+};
 
+class Binary_Tree:public tree{
+    public:
+        Binary_Tree();
+        Binary_Tree(int value);
+};
+class Binary_Search_Tree:public tree{
+    public:
 
+        node* insert(node* root, int value) override{}
+        Binary_Search_Tree();
+        Binary_Search_Tree(int value);
 
+};
+class AVL_Tree:public tree{
+    public:
+        node* insert(node* root, int value) override{}
+        AVL_Tree();
+        AVL_Tree(int value);
 
+};
+class Splay_Tree:public tree{
+    public:
+        node* insert(node* root, int value) override{}
+        Splay_Tree();
+        Splay_Tree(int value);
 };
 
 inline void tree::delete_tree(node * root){
@@ -140,32 +164,7 @@ void inline tree::post_order(node * root){
     cout << root->value << "->";
 }
 
-class Binary_Tree:public tree{
-    public:
-        Binary_Tree();
-        Binary_Tree(int value);
-};
-class Binary_Search_Tree:public tree{
-    public:
 
-        node* insert(node* root, int value) override{}
-        Binary_Search_Tree();
-        Binary_Search_Tree(int value);
-
-};
-class AVL_Tree:public tree{
-    public:
-        node* insert(node* root, int value) override{}
-        AVL_Tree();
-        AVL_Tree(int value);
-
-};
-class Splay_Tree:public tree{
-    public:
-        node* insert(node* root, int value) override{}
-        Splay_Tree();
-        Splay_Tree(int value);
-};
 
 
 Binary_Search_Tree::node* Binary_Search_Tree::insert(node* root, int value) {
@@ -207,4 +206,48 @@ Binary_Search_Tree::node* Binary_Search_Tree::insert(node* root, int value) {
     }
     return root;
 }
+
+
+AVL_Tree::node* AVL_Tree::insert(node* root, int value) {
+
+    if (root == nullptr){
+        root = new node();
+        root->value = value;
+        root->right_child = nullptr;
+        root->left_child = nullptr;
+        root->parent =  nullptr;
+        return root;
+    }
+
+    if(value < root->value){
+        //go left
+        if(root->left_child == nullptr){
+            node* n = new node();
+            n->value = value;
+            n->right_child=nullptr;
+            n->left_child = nullptr;
+            n->parent = root;
+            root->left_child = n;
+        }else{
+            insert(root->left_child, value);
+        }
+
+    //go right
+    }else if(value > root->value){
+        if(root->right_child ==nullptr){
+            node* n = new node();
+            n->value = value;
+            n->right_child=nullptr;
+            n->left_child = nullptr;
+            n->parent = root; 
+            root->right_child = n;
+        }else{
+            insert(root->right_child, value);
+        }
+    }
+
+    //Check height
+    return root;
+}
+
 #endif
